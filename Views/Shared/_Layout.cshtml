@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - JSON Type Converter</title>
+    <link rel="stylesheet" href="~/Content/styles.css" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body>
+    <!-- Box container for the entire project -->
+    <div class="container box-container">
+        <!-- Header Section -->
+        <header>
+            <h3> Inspect Class and Convert to JSON</h3>
+        </header>
+        <!-- Main Content Area -->
+        <main>
+            @RenderBody() <!-- Placeholder for specific views to render their content -->
+        </main>
+        <!-- Footer Section (Optional) -->
+        <footer>
+            <p> &copy; @DateTime.Now.Year - JSON Type Converter</p>
+        </footer>
+    </div>
+    <!-- Scripts Section -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

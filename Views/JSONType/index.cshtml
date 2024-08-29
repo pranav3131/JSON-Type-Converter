@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Class/Model Details";
+}
+
+<h4>Enter the Class/Model name:</h4>
+
+<!-- Input the class/Model name in the input text box -->
+<div class="input-group">
+    <input type="text" id="classname" placeholder="Enter the class/model name" class="input-textbox" />
+    <button type="button" id="getclassinfo" class="input-button">Get Class Details</button>
+</div>
+
+
+<!-- Area to display the properties and methods -->
+<div id="classinfo">
+    <h4>Properties</h4>
+    <ul id="propertieslist"></ul> <!-- ids acting as a placeholder to populate the respective data -->
+
+    <h4>Methods</h4>
+    <ul id="methodslist"></ul>
+</div>
+
+
+<!-- Button to generate JSON -->
+<button type="button" id="generateJSON">Generate JSON</button>
+
+
+<!-- Area to display the JSON Objects -->
+<div id="JSONoutput">
+    <h4>JSON Representation</h4>
+    <pre id="JSONcontent"></pre> <!-- pre tag is used as pre-formatting tag, used for specifically monospace font => JSON object easy to read -->
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () { /* JQuery function which checks and loads document before executing the functions */
+        // Function to handle the "getclassinfo" button click
+        $("#getclassinfo").click(function () {
+            var classname = $("#classname").val(); // Value of the class name gets stored in variable "classname"
+
+            // AJAX Function => sends requests to server and receives response without reloading the entire webpage
+            $.ajax({
+                url: '@Url.Action("getclassinfo","JSONType")', /* url.action is helper class which points to the server endpoint of the action name and controller name */
+                type: 'GET', // HTTP method
+
+                data: { classname: classname },
+
+                success: function (data) {
+                    // Clear previous data
+                    if (data.ClassName) {
+                        $("#propertieslist").empty();
+                        $("#methodslist").empty();
+
+
+                        // Populate Properties
+                        $.each(data.Properties, function (index, prop) {
+                            $("#propertieslist").append("<li>" + prop.name + ": " + prop.Type + "</li>");
+                        });
+
+
+                        // Populate Methods
+                        $.each(data.Methods, function (index, method) {
+                            $("#methodslist").append("<li>" + method.name + ": " + method.Type + "</li>");
+                        });
+
+
+                        // Display JSON Data
+                        $("#JSONcontent").text(JSON.stringify(data, null, 4));
+                    } else {
+                        alert(data); // Show error message if class not found
+                    }
+                },
+                error: function () {
+                    alert("An error occurred while generating JSON");
+                }
+            });
+        });
+    });
+</script>
