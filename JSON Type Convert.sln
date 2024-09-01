@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON Type Convert", "JSON Type Convert\JSON Type Convert.csproj", "{37746A69-4245-4C51-AC36-5775B3646D01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON Type Convert", "JSON Type Convert.csproj", "{37746A69-4245-4C51-AC36-5775B3646D01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E68140C4-3D2B-4AFD-BCFD-1232DF7901CA}
+		SolutionGuid = {AD1811C7-CFA4-4DEA-9765-74BE0F970029}
 	EndGlobalSection
 EndGlobal
