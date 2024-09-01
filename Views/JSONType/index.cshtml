@@ -16,8 +16,6 @@
     <h4>Properties</h4>
     <ul id="propertieslist"></ul> <!-- ids acting as a placeholder to populate the respective data -->
 
-    <h4>Methods</h4>
-    <ul id="methodslist"></ul>
 </div>
 
 
@@ -53,20 +51,13 @@
                     // Clear previous data
                     if (data.ClassName) {
                         $("#propertieslist").empty();
-                        $("#methodslist").empty();
+                        
 
 
                         // Populate Properties
                         $.each(data.Properties, function (index, prop) {
                             $("#propertieslist").append("<li>" + prop.name + ": " + prop.Type + "</li>");
                         });
-
-
-                        // Populate Methods
-                        $.each(data.Methods, function (index, method) {
-                            $("#methodslist").append("<li>" + method.name + ": " + method.Type + "</li>");
-                        });
-
 
                         // Display JSON Data
                         $("#JSONcontent").text(JSON.stringify(data, null, 4));

@@ -136,3 +136,27 @@ C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\obj\Debug\JSO
 C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\obj\Debug\JSON Typ.0469E7B6.Up2Date
 C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\obj\Debug\JSON Type Convert.dll
 C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\obj\Debug\JSON Type Convert.pdb
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.AppContext.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Console.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.IO.Compression.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Net.Http.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Net.Sockets.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.ValueTuple.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Xml.XPath.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\HP\source\repos\JSON Type Convert new\JSON-Type-Converter\bin\System.Web.Mvc.xml
