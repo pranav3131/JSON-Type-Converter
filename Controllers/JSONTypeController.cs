@@ -41,20 +41,12 @@ namespace JSON_Type_Convert.Controllers
             .ToList();
 
 
-            // Get the methods of the class 
-            var methods = classtype.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly) // BindingFlags.DeclaredOnly => Only incl.Methods declared in the class not inherited ones.
-
-            .Select(m => new { name = m.Name, Type = m.ReturnType.Name }) // Methods use ReturnType whereas properties use PropertyType
-            .ToList();
-
-
-
             // Combine properties and methods onto a different anonymous object
             var result = new
             {
                 ClassName = classname,
                 Properties = properties,
-                Methods = methods
+                
             };
 
 
