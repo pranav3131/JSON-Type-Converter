@@ -47,7 +47,7 @@ label {
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .input-button {
@@ -117,4 +117,9 @@ textarea {
 #classinfo h4,
 #json-output h4 {
     font-family: 'Times New Roman', Times, serif;
+}
+
+.input-dropdown
+{
+    margin-left: 15px;
 }
