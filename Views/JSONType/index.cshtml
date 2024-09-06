@@ -30,10 +30,11 @@
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" > </script>
+
+
 <script type="text/javascript">
-
-
 
     $(document).ready(function () { /* JQuery function which checks and loads document before executing the functions */
         // Function to handle the "getclassinfo" button click
@@ -51,24 +52,80 @@
                     // Clear previous data
                     if (data.ClassName) {
                         $("#propertieslist").empty();
-                        
 
 
-                        // Populate Properties
+
+                        // Populate Properties with input fields for values
                         $.each(data.Properties, function (index, prop) {
-                            $("#propertieslist").append("<li>" + prop.name + ": " + prop.Type + "</li>");
+                            var inputfield = '';
+                            if (prop.Type === 'String') {
+                                inputfield = '<input type="text" class="input-textbox" name="' + prop.name + '" />';
+                            }
+                            else if (prop.Type === 'DateTime') {
+                                inputfield = '<input type="date" class="input-textbox" name="' + prop.name + '"/>';
+                            }
+                            else if (prop.Type === 'Double') {
+                                inputfield = '<select class="input-dropdown" name="' + prop.name + '">' +
+                                    '<option value="0-50000">0-50000</option>' +
+                                    '<option value="50001-100000">50001-100000</option>' +
+                                    '<option value="100001-150000">100001-150000</option></select>';
+                            } else if (prop.Type === 'Boolean') {
+                                inputfield = '<input type="radio" name="' + prop.name + '" value="true"> True ' +
+                                    '<input type="radio" name="' + prop.name + '" value="false"> False';
+                            }
+
+                            $("#propertieslist").append('<li>' + prop.name + ': ' + prop.Type + ' ' + inputfield + '</li>');
                         });
 
-                        // Display JSON Data
-                        $("#JSONcontent").text(JSON.stringify(data, null, 4));
+                        // Clear JSON output if any
+                        $("#JSONcontent").text('');
                     } else {
-                        alert(data); // Show error message if class not found
+                        alert("Class not found.");
                     }
                 },
                 error: function () {
-                    alert("An error occurred while generating JSON");
+                    alert("An error occurred while retrieving class details.");
                 }
             });
         });
+
+
+        // Function to handle the "generateJSON" button click
+        $("#generateJSON").click(function () {
+            var classname = $("#classname").val();
+            var names = [];
+            var types = [];
+            var values = [];
+
+            // Collect property names, types, and values from input fields
+            $("#propertieslist li").each(function () {
+                var propName = $(this).find("input, select").attr("name");
+                var propType = $(this).text().split(':')[1].trim().split(' ')[0];
+                var propValue = $(this).find("input:checked, input[type='text'], input[type='date'], select").val();
+
+                if (propName) {
+                    names.push(propName);
+                    types.push(propType);
+                    values.push(propValue);
+                }
+            });
+
+            // AJAX request to generate the final JSON with property values
+            $.ajax({
+                url: '@Url.Action("GenerateJSON", "JSONType")',
+                type: 'POST',
+                data: { classname: classname, names: names, types: types, values: values },
+                traditional: true, // Allow sending arrays in the data
+                success: function (jsonData) {
+                    // Display the generated JSON data
+                    var jsonString = JSON.stringify(jsonData, null, 4);
+                    $("#JSONcontent").text(jsonString);
+                },
+                error: function () {
+                    alert("An error occurred while generating the JSON.");
+                }
+            })
+        });
     });
 </script>
+
