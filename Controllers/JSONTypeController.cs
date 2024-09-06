@@ -46,11 +46,43 @@ namespace JSON_Type_Convert.Controllers
             {
                 ClassName = classname,
                 Properties = properties,
-                
+
             };
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
 
-            return Json(result, JsonRequestBehavior.AllowGet); // Return the result in Json format accessible to client side of the application.
+
+        //New Action method for only genearating JSON Values of the properties when clicked on "Generate JSON" button
+        public JsonResult generateJSON(string classname, string[] names, string[] types, string[] values)
+        {
+
+            if (!string.IsNullOrWhiteSpace(classname) && classname.Trim().Equals("Employee", StringComparison.OrdinalIgnoreCase))
+            {
+                var properties = names.Select((name, index) => new
+                {
+                    Name = name,
+                    Type = types[index],
+                    Value = values[index]
+                }).ToList();
+
+                // Create a JSON representation of the class properties
+                var jsonresult = new
+                {
+                    ClassName = classname,
+                    Properties = properties
+                };
+                return Json(jsonresult, JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+                return Json("Class not found", JsonRequestBehavior.AllowGet);
+            }
+ 
+            }
+         
+
         }
     }
-}
+
