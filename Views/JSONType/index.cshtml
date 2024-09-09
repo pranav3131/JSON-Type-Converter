@@ -2,7 +2,7 @@
     ViewBag.Title = "Class/Model Details";
 }
 
-<h4>Enter the Class/Model name:</h4>
+<h3>Enter the Class/Model name:</h3>
 
 <!-- Input the class/Model name in the input text box -->
 <div class="input-group">
@@ -13,30 +13,36 @@
 
 <!-- Area to display the properties and methods -->
 <div id="classinfo">
-    <h4>Properties</h4>
+    <h3>Properties</h3>
     <ul id="propertieslist"></ul> <!-- ids acting as a placeholder to populate the respective data -->
 
 </div>
 
 
 <!-- Button to generate JSON -->
-<button type="button" id="generateJSON">Generate JSON</button>
+<button type="button" class="input-button" id="generateJSON">Generate JSON</button>
 
 
 <!-- Area to display the JSON Objects -->
 <div id="JSONoutput">
-    <h4>JSON Representation</h4>
+    <h3>JSON Representation</h3>
     <pre id="JSONcontent"></pre> <!-- pre tag is used as pre-formatting tag, used for specifically monospace font => JSON object easy to read -->
 </div>
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" > </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <script type="text/javascript">
 
     $(document).ready(function () { /* JQuery function which checks and loads document before executing the functions */
+
+        $('#theme-toggle').change(function () {    //Js code to handle dark switch functionality
+            $('body').toggleClass('dark-mode');
+        });
+
+
         // Function to handle the "getclassinfo" button click
         $("#getclassinfo").click(function () {
             var classname = $("#classname").val(); // Value of the class name gets stored in variable "classname"
@@ -59,19 +65,25 @@
                         $.each(data.Properties, function (index, prop) {
                             var inputfield = '';
                             if (prop.Type === 'String') {
-                                inputfield = '<input type="text" class="input-textbox" name="' + prop.name + '" />';
+                                inputfield = '<input type="text" class="input-textbox" name="' + prop.name + '" />' +
+                                           '<span class="validation-message" data-name="' + prop.name + '"></span>';
+
                             }
                             else if (prop.Type === 'DateTime') {
-                                inputfield = '<input type="date" class="input-textbox" name="' + prop.name + '"/>';
+                                inputfield = '<input type="date" class="input-textbox" name="' + prop.name + '"/>' +
+                                '<span class="validation-message" data-name="' + prop.name + '"></span>';
                             }
                             else if (prop.Type === 'Double') {
                                 inputfield = '<select class="input-dropdown" name="' + prop.name + '">' +
                                     '<option value="0-50000">0-50000</option>' +
                                     '<option value="50001-100000">50001-100000</option>' +
-                                    '<option value="100001-150000">100001-150000</option></select>';
-                            } else if (prop.Type === 'Boolean') {
+                                    '<option value="100001-150000">100001-150000</option></select>' +
+                                '<span class="validation-message" data-name="' + prop.name + '"></span>';
+                            }
+                            else if (prop.Type === 'Boolean') {
                                 inputfield = '<input type="radio" name="' + prop.name + '" value="true"> True ' +
-                                    '<input type="radio" name="' + prop.name + '" value="false"> False';
+                                    '<input type="radio" name="' + prop.name + '" value="false"> False' +
+                                '<span class="validation-message" data-name="' + prop.name + '"></span>';
                             }
 
                             $("#propertieslist").append('<li>' + prop.name + ':' + prop.Type + ' ' + inputfield + '</li>');
@@ -103,10 +115,24 @@
                 var propType = $(this).text().split(':')[1].trim().split(' ')[0];
                 var propValue = $(this).find("input:checked, input[type='text'], input[type='date'], select").val();
 
+
                 if (propName) {
                     names.push(propName);
                     types.push(propType);
                     values.push(propValue);
+                }
+            });
+
+            // Display validation messages
+            $("#propertieslist li").each(function () {
+                var propName = $(this).find("input, select").attr("name");
+                var propValue = $(this).find("input:checked, input[type='text'], input[type='date'], select").val();
+                var $validationMessage = $(this).find('.validation-message');
+
+                if (!propValue) {
+                    $validationMessage.text('This field is optional but empty.');
+                } else {
+                    $validationMessage.text(''); // Clear validation message if field is not empty
                 }
             });
 
@@ -124,7 +150,8 @@
                 error: function () {
                     alert("An error occurred while generating the JSON.");
                 }
-            })
+            });
+
         });
     });
 </script>

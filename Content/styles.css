@@ -1,6 +1,49 @@
-﻿
+﻿:root {
+    /*Light Mode*/
+    --background-color: #f9f9f9; /*Light gray*/
+    --text-color: #333; /*Dark Gray Text*/
+    --button-bg-color: #4CAF50; /*Green */
+    --button-hover-color: #3E8E41; /* Dark Green*/
+    --input-focus-color: #007bff; /*Blue for ip fieldsbuttons/*/
+}
+.dark-mode {
+    /*Dark Mode*/
+    --background-color: #2c2c2c;   /*Dark Gray*/
+    --text-color: #f0f0f0;         /*Light Gray*/
+    --button-bg-color: #007bff;     /*Blue*/
+    --button-hover-color: #0056b3;   /*Darker Blue*/
+    --input-focus-color: #ff7f50;    /*Coral*/
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+h3, h4 {
+    color: var(--text-color);
+}
+
+/* Container for theme toggle switch */
+.theme-toggle-container {
+    position: absolute; /* Position it relative to its closest positioned ancestor (i.e., the box-container) */
+    top: 10px; /* Space from the top of the container */
+    right: 10px; /* Space from the right edge of the container */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the labels and the switch */
+}
+
+/* Labels for theme toggle switch */
+.theme-label {
+    color: var(--text-color); /* Ensure the label color is visible in both modes */
+    font-size: 16px;
+    margin: 0; /* Remove default margin */
+}
+
+
 .box-container {
-    border: 1px solid #ddd; /* 1pixel solid border with light gray colour */
+    border: 1px solid var(--text-color);  /* 1pixel solid border with light gray colour */
 
     padding: 20px; /* 20pixel space b/w content and border  */
 
@@ -8,9 +51,9 @@
 
     margin: 0 auto; /* Centers container horizontally with parent */
 
-    background-color: #f9f9f9; /* Sets a very light gray background color. */
+    background-color: var(--background-color);   /* Sets a very light gray background color. */
 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the container.*/
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the container.*/
 
     border-radius: 8px; /* Rounds the corners of the container with an 8-pixel radius. */
 }
@@ -20,7 +63,7 @@
 
  .box-container header {
         text-align: center; /*Centers the text within the header.*/
-
+        position:relative;
         margin-bottom: 20px; /*Adds 20 pixels of space below the header.*/
     }
 
@@ -30,8 +73,8 @@
 h1 {
     text-align: center;
     font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
-    color: #333;
-    margin-bottom: 30px;
+    color: var(--text-color);
+    margin-bottom: 40px;
 }
 
 /* Styling for labels */
@@ -39,21 +82,24 @@ label {
     display: inline-block;
     margin-bottom: 10px;
     font-weight: bold;
+    color: var(--text-color);
 }
 
 .input-textbox {
+    background-color: var(--background-color);    /* Background according to theme */
     width: 70%;
     padding: 5px;
     font-size: 14px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--text-color); /* Use theme color for border */
     border-radius: 5px;
     margin-left: 20px;
 }
 
+
 .input-button {
     padding: 5px 10px;
     font-size: 14px;
-    background-color: #4CAF50;
+    background-color: var(--button-bg-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -61,9 +107,15 @@ label {
     margin-left: 10px;
 }
 
+.input-textbox:focus {
+    outline: none;
+    border-color: var(--input-focus-color); /* Apply focus color */
+    box-shadow: 0 0 5px var(--input-focus-color);
+}
 
-    button:hover {
-        background-color: #0056b3;
+
+.input-button:hover {
+       background-color: var(--button-hover-color);
     }
 
 /* Class details section */
@@ -82,7 +134,8 @@ ul {
 
 li {
     padding: 5px;
-    background-color: #eee;
+    color: var(--text-color);
+    background-color: var(--background-color);
     margin-bottom: 5px;
     border-radius: 5px;
 }
@@ -92,7 +145,8 @@ li {
     width: 100%;
     margin-top: 20px;
     padding: 10px;
-    background-color: #f0f0f0;
+    color: var(--text-color);
+    background-color: var(--background-color);
     border: 1px solid #ccc;
     border-radius: 5px;
     font-family: monospace;
@@ -119,7 +173,30 @@ textarea {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.input-dropdown
-{
+.input-dropdown, input[type="radio"], input[type="date"] {
+    display: inline-block; /* Ensure all input fields are inline */
     margin-left: 15px;
+    width: auto; /* Adjust width of input fields */
+    background-color: var(--background-color); /* Ensure background color */
+    color: var(--text-color); /* Ensure text color */
+}
+
+.validation-message {
+    color: red; /* Example color */
+    font-size: 12px; /* Example font size */
+    display: inline-block;
+    margin-left: 10px;
+}
+#classname.input-textbox {
+    width: 70%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    margin-left: 1px;
+}
+
+/* Placeholder styles */
+::placeholder {
+    color: var(--text-color); /* Ensure placeholder color */
 }
