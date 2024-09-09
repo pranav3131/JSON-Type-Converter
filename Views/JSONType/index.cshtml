@@ -77,10 +77,8 @@
                                 inputfield = '<select class="input-dropdown" name="' + prop.name + '">' +
                                     '<option value="0-50000">0-50000</option>' +
                                     '<option value="50001-100000">50001-100000</option>' +
-                                    '<option value="100001-150000">100001-150000</option></select>' +
-                                '<span class="validation-message" data-name="' + prop.name + '"></span>';
-                            }
-                            else if (prop.Type === 'Boolean') {
+                                    '<option value="100001-150000">100001-150000</option></select>';
+                            } else if (prop.Type === 'Boolean') {
                                 inputfield = '<input type="radio" name="' + prop.name + '" value="true"> True ' +
                                     '<input type="radio" name="' + prop.name + '" value="false"> False' +
                                 '<span class="validation-message" data-name="' + prop.name + '"></span>';

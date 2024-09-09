@@ -73,7 +73,11 @@ h3, h4 {
 h1 {
     text-align: center;
     font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+<<<<<<< HEAD
     color: var(--text-color);
+=======
+    color: #333;
+>>>>>>> 5fbfcefec81a3054874220a379a62884bd3cb89a
     margin-bottom: 40px;
 }
 
@@ -173,12 +177,34 @@ textarea {
     font-family: 'Times New Roman', Times, serif;
 }
 
+<<<<<<< HEAD
 .input-dropdown, input[type="radio"], input[type="date"] {
     display: inline-block; /* Ensure all input fields are inline */
     margin-left: 15px;
     width: auto; /* Adjust width of input fields */
     background-color: var(--background-color); /* Ensure background color */
     color: var(--text-color); /* Ensure text color */
+=======
+ .input-dropdown, input[type="radio"], input[type="date"] {
+    display: inline-block; /* Ensure all input fields are inline */
+    margin-left: 15px;
+    width: auto; /* Adjust width of input fields */
+}
+
+.validation-message {
+    color: red; /* Example color */
+    font-size: 12px; /* Example font size */
+    display: inline-block;
+    margin-left: 10px;
+}
+#classname.input-textbox {
+    width: 70%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 1px;
+>>>>>>> 5fbfcefec81a3054874220a379a62884bd3cb89a
 }
 
 .validation-message {
