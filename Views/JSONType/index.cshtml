@@ -29,6 +29,7 @@
     <pre id="JSONcontent"></pre> <!-- pre tag is used as pre-formatting tag, used for specifically monospace font => JSON object easy to read -->
 </div>
 
+<button type="button" class="input-button" id="downloadJSON">Download JSON File</button>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -149,7 +150,23 @@
                     alert("An error occurred while generating the JSON.");
                 }
             });
+        });
+         $("#downloadJSON").click(function () {
+            var jsonData = $("#JSONcontent").text(); // Get the JSON content from the page
 
+            if (jsonData) {
+                var blob = new Blob([jsonData], { type: "application/json" }); // Create a Blob object
+                var url = URL.createObjectURL(blob); // Generate a URL for the Blob
+                var a = document.createElement("a"); // Create an anchor element
+                a.href = url; // Set the href to the Blob URL
+                a.download = "class_details.json"; // Specify the file name
+                document.body.appendChild(a); // Append anchor to the body
+                a.click(); // Trigger the download
+                document.body.removeChild(a); // Remove the anchor after download
+                URL.revokeObjectURL(url); // Free up memory by revoking the Blob URL
+            } else {
+                alert("Please generate JSON before downloading.");
+            }
         });
     });
 </script>
